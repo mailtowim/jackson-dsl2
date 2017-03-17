@@ -275,7 +275,7 @@ public abstract class JsonDsl extends TupleDsl {
      * @param value a BigDecimal value
      * @return the numeric node
      */
-    public static NumericNode number(BigDecimal value) {
+    public static ValueNode number(BigDecimal value) {
         return jsonNodeFactoryThreadLocal.get().numberNode(value);
     }
 
@@ -285,7 +285,7 @@ public abstract class JsonDsl extends TupleDsl {
      * @param value a BigInteger value
      * @return the numeric node
      */
-    public static NumericNode number(BigInteger value) {
+    public static ValueNode number(BigInteger value) {
         return jsonNodeFactoryThreadLocal.get().numberNode(value);
     }
 

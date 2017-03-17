@@ -105,7 +105,7 @@ abstract class TupleDsl {
      * @param value a BigInteger value
      * @return the tuple
      */
-    public static Tuple<NumericNode> tuple(String name, BigInteger value) {
+    public static Tuple<ValueNode> tuple(String name, BigInteger value) {
         return TupleObject.of(name, value);
     }
 
@@ -116,7 +116,7 @@ abstract class TupleDsl {
      * @param value a BigDecimal value
      * @return the tuple
      */
-    public static Tuple<NumericNode> tuple(String name, BigDecimal value) {
+    public static Tuple<ValueNode> tuple(String name, BigDecimal value) {
         return TupleObject.of(name, value);
     }
 
@@ -344,12 +344,12 @@ abstract class TupleDsl {
             return new TupleObject<ValueNode>(left, jsonNodeFactoryThreadLocal.get().numberNode(right));
         }
 
-        static Tuple<NumericNode> of(String left, BigDecimal right) {
-            return new TupleObject<NumericNode>(left, jsonNodeFactoryThreadLocal.get().numberNode(right));
+        static Tuple<ValueNode> of(String left, BigDecimal right) {
+            return new TupleObject<ValueNode>(left, jsonNodeFactoryThreadLocal.get().numberNode(right));
         }
 
-        static Tuple<NumericNode> of(String left, BigInteger right) {
-            return new TupleObject<NumericNode>(left, jsonNodeFactoryThreadLocal.get().numberNode(right));
+        static Tuple<ValueNode> of(String left, BigInteger right) {
+            return new TupleObject<ValueNode>(left, jsonNodeFactoryThreadLocal.get().numberNode(right));
         }
     }
 }
