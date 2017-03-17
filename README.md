@@ -1,4 +1,4 @@
-# jackson-dsl
+# jackson-dsl 2.x
 Dsl to make jackson 2.x objects
 
 Minimum requirements
