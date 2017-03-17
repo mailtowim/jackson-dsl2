@@ -24,7 +24,7 @@ public abstract class JsonDsl extends TupleDsl {
         jsonNodeFactoryThreadLocal.set(jsonNodeFactory);
         ObjectNode objectNode = new ObjectNode(jsonNodeFactoryThreadLocal.get());
         for (Tuple<?> tuple : tuples) {
-            objectNode.put(tuple.getName(), tuple.getValue());
+            objectNode.set(tuple.getName(), tuple.getValue());
         }
         jsonNodeFactoryThreadLocal.remove();
         return objectNode;
@@ -40,7 +40,7 @@ public abstract class JsonDsl extends TupleDsl {
     public static ObjectNode jsonDocument(Tuple<?>... tuples) {
         ObjectNode objectNode = new ObjectNode(jsonNodeFactoryThreadLocal.get());
         for (Tuple<?> tuple : tuples) {
-            objectNode.put(tuple.getName(), tuple.getValue());
+            objectNode.set(tuple.getName(), tuple.getValue());
         }
         jsonNodeFactoryThreadLocal.remove();
         return objectNode;
@@ -55,7 +55,7 @@ public abstract class JsonDsl extends TupleDsl {
     public static ObjectNode object(Tuple<?>... tuples) {
         ObjectNode objectNode = new ObjectNode(jsonNodeFactoryThreadLocal.get());
         for (Tuple<?> tuple : tuples) {
-            objectNode.put(tuple.getName(), tuple.getValue());
+            objectNode.set(tuple.getName(), tuple.getValue());
         }
         return objectNode;
     }
@@ -82,7 +82,7 @@ public abstract class JsonDsl extends TupleDsl {
      */
     public static ObjectNode object(String name, JsonNode value) {
         ObjectNode objectNode = new ObjectNode(jsonNodeFactoryThreadLocal.get());
-        objectNode.put(name, value);
+        objectNode.set(name, value);
         return objectNode;
     }
 
