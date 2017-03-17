@@ -1,0 +1,75 @@
+= Json DSL User Guide
+
+:author:    			Wim De Rammelaere
+
+== Purpose
+
+++++
+This utility can be used to create a json document without using a large java.lang.String object.<br/>
+By using the JsonDsl, you can create a jackson JsonNode directly.<br/>
+<br/>
+There is also a second java utility org.speedy.jackson.JsonDsl8 which adds support for closures.
+++++
+
+== Internal implementation
+
+++++
+The utility JsonDsl uses static methods to emulate the json structure.<br/>
+The following methods are available:
+++++
+
+- the method jsonDocument(): to create a json document and you can afterwards call toString to get the String representation
+- the method object(): to create a part of your json, surrounded with curly braces
+- the method array(): to create a json array
+- the method tuple(key, value): to create a json key-value pair
+- the method text(value): to create explicitely a text node
+- the method number(value): to create explicitely a number node
+- the method binary(value): to create explicitely a binary node
+- the method bool(value): to create explicitely a boolean node
+- the method nil(): to create a null node
+
+++++
+The utility JsonDsl8 also adds support to pass closures to a json.
+++++
+
+== Example usage
+[source,java]
+----
+import org.codehaus.jackson.JsonNode;
+import static org.speedy.jackson.JsonDsl.*;
+
+public class JsonTestClass {
+
+private JsonNode jsonDocument = jsonDocument(
+    tuple("requestedDate", 145646464969L),
+    tuple("elements", array("element1", "element2"))
+);
+
+}
+----
+
+which generates the following document:
+[source,json]
+----
+{
+    "requestedDate":145646464969,
+    "elements":["element1", "element2"]
+}
+----
+
+in java 8u60 and higher (compiled with _-parameters_ flag), you can also use closures with JsonDsl8:
+
+[source,java]
+----
+import org.codehaus.jackson.JsonNode;
+import static org.speedy.jackson.JsonDsl8.*;
+
+public class JsonTestClass8 {
+
+private JsonNode jsonDocument = jsonDocument(
+    (requestedDate) -> number(145646464969L),
+    (elements) -> array("element1", "element2")
+);
+
+}
+----
